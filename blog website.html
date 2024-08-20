@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Horizons - Blog Website</title>
+    <style>
+        /* Reset some default styling */
+        body, h1, h2, h3, p, ul, li, form, input, textarea, button {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Basic styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        header {
+            background: #000;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .logo {
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        header nav {
+            margin-top: 10px;
+        }
+
+        header nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 1.1em;
+            transition: color 0.3s;
+        }
+
+        header nav a:hover {
+            color: #ccc;
+        }
+
+        main {
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .hero {
+            background: #222;
+            color: #eee;
+            padding: 60px 20px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .hero h1 {
+            margin-bottom: 15px;
+            font-size: 3em;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: #444;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            transition: background 0.3s;
+        }
+
+        .cta-button:hover {
+            background: #555;
+        }
+
+        .search-bar {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .search-bar input[type="text"] {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        .search-bar button {
+            padding: 10px 20px;
+            background: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background 0.3s;
+            margin-left: -5px;
+        }
+
+        .search-bar button:hover {
+            background: #444;
+        }
+
+        .featured-posts, .blog-posts {
+            margin-top: 30px;
+        }
+
+        .featured-posts article, .blog-posts article {
+            background: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .featured-posts h3 a, .blog-posts h2 a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .featured-posts h3 a:hover, .blog-posts h2 a:hover {
+            text-decoration: underline;
+            color: #444;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .pagination button {
+            background: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin: 0 5px;
+            transition: background 0.3s;
+        }
+
+        .pagination button:hover {
+            background: #444;
+        }
+
+        .pagination button.disabled {
+            background: #666;
+            cursor: not-allowed;
+        }
+
+        .about, .contact {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .about ul {
+            list-style: none;
+        }
+
+        .about li {
+            margin-bottom: 10px;
+        }
+
+        .contact form label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .contact form input, .contact form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .contact form button {
+            background: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+
+        .contact form button:hover {
+            background: #444;
+        }
+
+        footer {
+            background: #000;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        footer .footer-content form {
+            margin: 20px 0;
+        }
+
+        footer .footer-content form input {
+            padding: 10px;
+            margin-right: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        footer .footer-content form button {
+            padding: 10px 20px;
+            background: #444;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        footer .footer-content form button:hover {
+            background: #555;
+        }
+
+        footer p {
+            margin: 10px 0;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #333;
+            color: #fff;
+            border: none;
+            padding: 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            font-size: 1.5em;
+            transition: background 0.3s;
+        }
+
+        .back-to-top:hover {
+            background: #444;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5em;
+            }
+
+            .hero p {
+                font-size: 1em;
+            }
+
+            .search-bar input[type="text"] {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Tech Horizons</div>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#blog">Blog</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Homepage -->
+        <section id="home" class="hero">
+            <h1>Welcome to Tech Horizons</h1>
+            <p>Exploring the cutting-edge of technology and software innovation</p>
+            <a href="#blog" class="cta-button">Explore Our Blog</a>
+        </section>
+
+        <section class="search-bar">
+            <input type="text" placeholder="Search blog posts...">
+            <button>Search</button>
+        </section>
+
+        <section id="featured-posts" class="featured-posts">
+            <h2>Featured Posts</h2>
+            <article>
+                <h3><a href="#">The Future of AI: Trends to Watch in 2024</a></h3>
+                <p>Artificial Intelligence continues to advance rapidly. Discover the key trends and predictions for the year ahead.</p>
+            </article>
+            <article>
+                <h3><a href="#">Coding for the Modern Web: Essential Skills for 2024</a></h3>
+                <p>Master the skills needed for modern web development. This guide covers essential coding practices and tools.</p>
+            </article>
+            <article>
+                <h3><a href="#">Introduction to Cloud Computing: Benefits and Challenges</a></h3>
+                <p>Understand the basics of cloud computing, including its benefits and the challenges businesses may face.</p>
+            </article>
+        </section>
+
+        <!-- Blog Page -->
+        <section id="blog" class="blog-posts">
+            <h1>Blog</h1>
+            <article>
+                <h2><a href="#">The Future of AI: Trends to Watch in 2024</a></h2>
+                <p>August 15, 2024 - AI is transforming industries at an unprecedented rate. Explore the trends and technologies that will shape the future of AI.</p>
+            </article>
+            <article>
+                <h2><a href="#">Coding for the Modern Web: Essential Skills for 2024</a></h2>
+                <p>August 10, 2024 - Discover the essential coding skills and practices every web developer needs to master in 2024.</p>
+            </article>
+            <article>
+                <h2><a href="#">Introduction to Cloud Computing: Benefits and Challenges</a></h2>
+                <p>August 5, 2024 - Get a comprehensive introduction to cloud computing, exploring its benefits, challenges, and applications.</p>
+            </article>
+            <article>
+                <h2><a href="#">Understanding DevOps: Streamlining Development and Operations</a></h2>
+                <p>July 25, 2024 - Learn about DevOps practices and how they integrate development and operations for improved software delivery.</p>
+            </article>
+            <article>
+                <h2><a href="#">Top 10 Programming Languages to Learn in 2024</a></h2>
+                <p>July 15, 2024 - Explore the top programming languages to learn this year and how they fit into the current tech landscape.</p>
+            </article>
+        </section>
+
+        <!-- Pagination -->
+        <div class="pagination">
+            <button class="disabled">Previous</button>
+            <button>Next</button>
+        </div>
+
+        <!-- Contact Page -->
+        <section id="contact" class="contact">
+            <h1>Contact Us</h1>
+            <form action="#" method="post">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+                
+                <button type="submit">Send Message</button>
+            </form>
+            <p>For any inquiries, email us at <a href="mailto:contact@techhorizons.com">contact@techhorizons.com</a></p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>Connect with us: 
+                <a href="#" style="color: #ccc;">Twitter</a>, 
+                <a href="#" style="color: #ccc;">Facebook</a>, 
+                <a href="#" style="color: #ccc;">LinkedIn</a>
+            </p>
+            <form action="#" method="post">
+                <label for="newsletter">Subscribe to our newsletter:</label>
+                <input type="email" id="newsletter" name="newsletter" placeholder="Your email address" required>
+                <button type="submit">Subscribe</button>
+            </form>
+            <p>&copy; 2024 Tech Horizons. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <button class="back-to-top" onclick="scrollToTop()">&#8679;</button>
+
+    <script>
+        // JavaScript for interactive elements
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('JavaScript Loaded');
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Back to Top button functionality
+            const backToTopButton = document.querySelector('.back-to-top');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    backToTopButton.style.display = 'block';
+                } else {
+                    backToTopButton.style.display = 'none';
+                }
+            });
+        });
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+</html>
